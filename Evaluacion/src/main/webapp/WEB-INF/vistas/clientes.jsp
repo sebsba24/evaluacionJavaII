@@ -12,6 +12,8 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
@@ -38,8 +40,8 @@
 						<div class="col-md-12">
 								<div class="content" >
 						
-									<table id="id_table" class="table table-striped table-bordered" >
-										<thead>
+									<table id="id_table" class="table table-striped " >
+										<thead class="table table-dark">
 											<tr>
 												<th style="width: 5%" >Numero Documento</th>
 												<th style="width: 25%">Nombre</th>
@@ -64,7 +66,7 @@
   	 <div class="modal fade" id="id_div_modal_registra" >
 			<div class="modal-dialog" style="width: 60%">
 		
-				<!-- Modal content-->
+				<!-- Client content-->
 				<div class="modal-content">
 				<div class="modal-header" style="padding: 35px 50px">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -88,25 +90,25 @@
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_nombre">Nombre</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_nombre" name="nombre" placeholder="Ingrese el nombre" type="text" maxlength="60"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_apellido">Apellidos</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_apellido" name="apellidos" placeholder="Ingrese los apellidos" type="text" maxlength="60"/>
 		                                        </div>
 		                                    </div>		   
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_fecha_nacimiento">Fecha nacimiento</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_reg_fecha_nacimiento" name="fechaNacimiento" type="date"/>
 		                                        </div>
 		                                    </div>
 											<div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_edad">Edad</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control input-sm" id="id_edad" name="edad" type="number" readonly/>
 		                                        </div>
 		                                    </div>  
@@ -126,13 +128,13 @@
 		                                    </div>    
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_telefono">Telefono</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													 <input class="form-control" id="id_reg_telefono" name="telefono" placeholder="Ingrese el telefono" type="text" maxlength="10"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_ocupacion">Ocupacion</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													 <select id="id_reg_ocupacion" name="ocupacion" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
@@ -182,31 +184,31 @@
 		                                     </div>
 		                                     <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_nombre">Nombre</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_nombre" name="nombre" placeholder="Ingrese el Nombre" type="text" maxlength="20"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_apellidos">apellidos</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_apellidos" name="apellidos" placeholder="Ingrese los apellidos" type="text" maxlength="60"/>
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_fecha_nacimiento">Fecha nacimiento</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_fecha_nacimiento" name="fechaNacimiento" placeholder="Ingrese la fecha de nacimiento" type="date"/>
 		                                        </div>
 											</div>
 											<div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_edad">Edad</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control input-sm" id="id_act_edad" name="edad" type="number" readonly/>
 		                                        </div>
 		                                    </div>	   
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_ciudad">Ciudad</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<select id="id_act_ciudad" name="ciudad">
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
@@ -214,7 +216,7 @@
 		                                    </div>   
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text" maxlength="50"/>
 		                                        </div>
 		                                    </div>    
@@ -226,7 +228,7 @@
 		                                    </div>  
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_ocupacion">Ocupacion</label>
-		                                        <div class="col-lg-3">
+		                                        <div class="col-lg-8">
 													<select id="id_act_ocupacion" name="ocupacion" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
