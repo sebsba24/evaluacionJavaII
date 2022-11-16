@@ -15,12 +15,12 @@
 <link rel="stylesheet" href="css/bootstrap.css"/>
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
-<title>CRUD Ejemplo</title>
+<title>CRUD Evalucion</title>
 </head>
 <body> 
 
  <div class="container">
- <h3>Crud de Modalidad</h3>
+ <h3>Crud Clientes</h3>
 		 <div class="col-md-23" >  
 
 				   <div class="row" style="height: 70px">
