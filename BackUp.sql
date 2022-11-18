@@ -35,7 +35,7 @@ CREATE TABLE `ciudades` (
 
 LOCK TABLES `ciudades` WRITE;
 /*!40000 ALTER TABLE `ciudades` DISABLE KEYS */;
-INSERT INTO `ciudades` VALUES (1,'Arauca'),(2,'Armenia'),(3,'Barranquilla'),(4,'Bogotá'),(5,'Bucaramanga'),(6,'Cali'),(7,'Cartagena'),(8,'Cúcuta'),(9,'Florencia'),(10,'Ibagué'),(11,'Leticia'),(12,'Manizales'),(13,'Medellín'),(14,'Mitú'),(15,'Mocoa'),(16,'Montería'),(17,'Neiva'),(18,'Pasto'),(19,'Pereira'),(20,'Popayán'),(21,'Puerto Careño'),(22,'Puerto Inírida'),(23,'Quibdó'),(24,'Rioacha'),(25,'San Andrés'),(26,'San José del Guaviare'),(27,'Santa Marta'),(28,'Sincelejo'),(29,'Tunja'),(30,'Valledupar'),(31,'Villavicenci'),(32,'Yopal');
+INSERT INTO `ciudades` VALUES (1,'Aracau'),(2,'Armeria'),(3,'Barranquilla'),(4,'Bogotá'),(5,'Bucaramanga'),(6,'Cali'),(7,'Cartagena'),(8,'Cúcuta'),(9,'Florencia'),(10,'Ibagué'),(11,'Leticia'),(12,'Manizales'),(13,'Medellín'),(14,'Mitú'),(15,'Mocoa'),(16,'Montería'),(17,'Neiva'),(18,'Pasto'),(19,'Pereira'),(20,'Popayán'),(21,'Puerto Carreño'),(22,'Puerto Inírada'),(23,'Quibdó'),(24,'Riohacha'),(25,'San Andrés'),(26,'San José del Guaviare'),(27,'Santa Marta'),(28,'Sincelejo'),(29,'Tunjo'),(30,'Valledupar'),(31,'Villavicencio'),(32,'Yopal');
 /*!40000 ALTER TABLE `ciudades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,6 +50,7 @@ CREATE TABLE `clientes` (
   `numeroDocumento` bigint(20) NOT NULL,
   `apellidos` varchar(60) DEFAULT NULL,
   `correo` varchar(60) DEFAULT NULL,
+  `edad` int(11) DEFAULT NULL,
   `fechaNacimiento` date DEFAULT NULL,
   `nombre` varchar(60) DEFAULT NULL,
   `telefono` varchar(60) DEFAULT NULL,
@@ -69,7 +70,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1000929992,'Cotrino','francesco@gmail.com','2004-07-15','Mariano','2020202002',4,1),(1000978655,'Chisica','sergio@gmail.com','1994-07-13','Sergio','3029291122',4,1),(1000987564,'Brito','sofia@gmail.com','2002-10-23','Sofia','3093232211',2,1),(1000987685,'Garmendia','luis@gmail.com','2022-11-07','Luis','3018484747',27,2),(1000987687,'Peñal','joahm@gmail.com','2003-02-09','Ramon','3098764400',1,2),(1098737322,'Dong','valentina@gmail.com','2004-07-15','Valentina','3939922222',2,2);
+INSERT INTO `clientes` VALUES (0,'hp','sergio@gmail.com',8,'2014-10-17','edgar','2828282222',2,2),(1000954332,'Chisica','sergio@gmail.com',21,'2001-02-07','Sofia','3029291222',2,2),(1000978655,' barragan basto','sergio@gmail.com',24,'1998-06-17','Andrews','3029243434',1,2),(1029282872,'Mi moreno pechocho 2','sergio@gmail.com',24,'1998-06-22','Andres','3029243434',1,2),(1092992929,'Mi moreno pechocho','sergio@gmail.com',26,'1996-07-17','Andres','3029291122',1,2),(1823837373,'Chisica','sergio@gmail.com',21,'2001-06-06','Daniel','3939333888',1,2),(5182367644,'Mi moreno pechocho','sergio@gmail.com',7,'2015-06-17','Daniel','3018282822',2,2);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-15 20:00:06
+-- Dump completed on 2022-11-17 20:50:34
