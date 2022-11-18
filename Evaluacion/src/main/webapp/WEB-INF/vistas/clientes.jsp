@@ -47,6 +47,7 @@
 												<th style="width: 25%">Nombre</th>
 												<th style="width: 8%">Apellidos</th>
 												<th style="width: 8%">Fecha Nacimiento</th>
+												<th style="width: 8%">Edad</th>
 												<th style="width: 8%">Ciudad</th>
 												<th style="width: 8%">Correo</th>
 												<th style="width: 8%">Telefono</th>
@@ -109,7 +110,7 @@
 											<div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_edad">Edad</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control input-sm" id="id_edad" name="edad" type="number" readonly/>
+													<input class="form-control input-sm" id="id_edad" name="edad" type="text" size="3" maxlength="2" readonly/>
 		                                        </div>
 		                                    </div>  
 		                                    <div class="form-group">
@@ -123,7 +124,7 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_correo">Correo</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="text" maxlength="50"/>
+													<input class="form-control" id="id_reg_correo" name="correo" placeholder="Ingrese el correo" type="email" maxlength="50"/>
 		                                        </div>
 		                                    </div>    
 		                                    <div class="form-group">
@@ -217,7 +218,7 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_act_correo">Correo</label>
 		                                        <div class="col-lg-8">
-													<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="text" maxlength="50"/>
+													<input class="form-control" id="id_act_correo" name="correo" placeholder="Ingrese el correo" type="email" maxlength="50"/>
 		                                        </div>
 		                                    </div>    
 		                                    <div class="form-group">
@@ -314,12 +315,13 @@ function agregar(lista){
 				{data: "nombre"},
 				{data: "apellidos"},
 				{data: "fechaNacimiento"},
+				{data: "edad"},
 				{data: "ciudad.nombreCiudad"},
 				{data: "correo"},
 				{data: "telefono"},			
 				{data: "ocupacion.nombreOcupacion"},
 				{data: function(row, type, val, meta){
-					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.numeroDocumento + '\',\'' + row.nombre +'\',\'' + row.apellidos  +'\',\'' + row.fechaNacimiento + '\',\'' + row.ciudad.idCiudad + '\',\'' +  row.correo + '\',\'' +  row.telefono + '\',\'' + row.ocupacion.idOcupacion+ '\')">Editar</button>';
+					var salida='<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''+row.numeroDocumento + '\',\'' + row.nombre +'\',\'' + row.apellidos  +'\',\'' + row.fechaNacimiento + '\',\'' + row.edad + '\',\'' + row.ciudad.idCiudad + '\',\'' +  row.correo + '\',\'' +  row.telefono + '\',\'' + row.ocupacion.idOcupacion+ '\')">Editar</button>';
 					return salida;
 				},className:'text-center'},	
 				{data: function(row, type, val, meta){
@@ -361,11 +363,12 @@ $('#id_act_ciudad').select2({
 });
 
 
-function editar(numeroDocumento,nombre,apellidos,fechaNacimiento,idCiudad,correo,telefono,idOcupacion){	
+function editar(numeroDocumento,nombre,apellidos,fechaNacimiento,edad,idCiudad,correo,telefono,idOcupacion){	
 	$('#id_act_numeroDocumento').val(numeroDocumento);
 	$('#id_act_nombre').val(nombre);
 	$('#id_act_apellidos').val(apellidos);
 	$('#id_act_fecha_nacimiento').val(fechaNacimiento);
+	$('#id_act_edad').val(edad);
 	$('#id_act_ciudad').val(idCiudad);
 	$('#id_act_correo').val(correo);
 	$('#id_act_telefono').val(telefono);
@@ -374,9 +377,11 @@ function editar(numeroDocumento,nombre,apellidos,fechaNacimiento,idCiudad,correo
 }
 
 function limpiarFormulario(){
+	$('#id_reg_numero_documento').val('');
 	$('#id_reg_nombre').val('');	
 	$('#id_reg_apellido').val('');
 	$('#id_reg_fecha_nacimiento').val('');
+	$('#id_edad').val('');
 	$('#id_reg_ciudad').val('');
 	$('#id_reg_correo').val('');
 	$('#id_reg_telefono').val('');
@@ -386,18 +391,19 @@ function limpiarFormulario(){
 $("#id_btn_registra").click(function(){
 	var validator = $('#id_form_registra').data('bootstrapValidator');
     validator.validate();
-	
+
     if (validator.isValid()) {
         $.ajax({
           type: "POST",
           url: "registrarCliente", 
           data: $('#id_form_registra').serialize(),
           success: function(data){
-        	  agregar(data.lista);
-        	  $('#id_div_modal_registra').modal("hide");
-        	  mostrarMensaje(data.mensaje);
-        	  limpiarFormulario();
-        	  validator.resetForm();
+        	agregar(data.lista);
+        	$('#id_div_modal_registra').modal("hide");
+			mostrarMensaje(data.mensaje);
+        	limpiarFormulario();
+        	validator.resetForm();
+			      	  
           },
           error: function(){
         	  mostrarMensaje(MSG_ERROR);
@@ -487,22 +493,12 @@ $("#id_btn_actualiza").click(function(){
                     },
                 }
             },
-			"#id_edad": {
+			"edad": {
         		selector : '#id_edad',
                 validators: {
                 	notEmpty: {
                         message: 'Para ser un cliente viable se debe encontrar \r en etapa productiva'
                     },
-					lessThan: {
-		                value: 65,
-		                inclusive: true,
-		                message: 'La edad debe ser menor a 65'
-		            },
-		            greaterThan: {
-		                value: 18,
-		                inclusive: true,
-		                message: 'La edad debe ser mayor a 18'
-		            }
                 }
             },
             "fk_ciudad.idCiudad": {
@@ -594,22 +590,12 @@ $("#id_btn_actualiza").click(function(){
                     },
                 }
             },
-			"#id_edad": {
+			"edad": {
         		selector : '#id_edad',
                 validators: {
                 	notEmpty: {
                         message: 'Para ser un cliente viable se debe encontrar \r en etapa productiva'
                     },
-					lessThan: {
-		                value: 65,
-		                inclusive: true,
-		                message: 'La edad debe ser menor a 65'
-		            },
-		            greaterThan: {
-		                value: 18,
-		                inclusive: true,
-		                message: 'La edad debe ser mayor a 18'
-		            }
                 }
             },
             "fk_ciudad.idCiudad": {

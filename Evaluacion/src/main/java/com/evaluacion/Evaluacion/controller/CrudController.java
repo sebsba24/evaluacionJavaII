@@ -58,11 +58,15 @@ public class CrudController {
 			Cliente clienteRegis = clienteService.createUpdate(cliente);
 			if(clienteRegis == null) {
 				salida.put("Mensaje", "Error de registro");		
+			}else if (clienteRegis.getEdad()>= 18 && clienteRegis.getEdad() <= 65) {
+				List<Cliente> lista = clienteService.listCliente();
+				salida.put("lista", lista);
+				salida.put("mensaje", "El cliente ha sido registrado, cumple la edad productiva");
 			}else {
 				List<Cliente> lista = clienteService.listCliente();
 				salida.put("lista", lista);
-				salida.put("mensaje", "El cliente se ha guardado");
-			}		
+				salida.put("mensaje", "El cliente ha sido registrado, no cumple la edad productiva");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

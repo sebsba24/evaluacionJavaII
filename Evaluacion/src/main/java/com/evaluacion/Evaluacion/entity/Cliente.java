@@ -38,6 +38,9 @@ public class Cliente {
 	@Column(name = "fechaNacimiento")
 	private Date fechaNacimiento;
 	
+	@Column(name="edad")
+	private int edad;
+	
 	@Column(name="correo", length = 60)
 	private String correo;
 	
@@ -57,30 +60,34 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(Long numeroDocumento, String nombre, String apellidos, Date fechaNacimiento, String correo,
+	public Cliente(String nombre, String apellidos, Date fechaNacimiento, int edad, String correo,
+			String telefono, Ciudad ciudad, Ocupacion ocupacion) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.fechaNacimiento = fechaNacimiento;
+		this.edad = edad;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.ciudad = ciudad;
+		this.ocupacion = ocupacion;
+	}
+
+	public Cliente(Long numeroDocumento, String nombre, String apellidos, Date fechaNacimiento, int edad, String correo,
 			String telefono, Ciudad ciudad, Ocupacion ocupacion) {
 		super();
 		this.numeroDocumento = numeroDocumento;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
+		this.edad = edad;
 		this.correo = correo;
 		this.telefono = telefono;
 		this.ciudad = ciudad;
 		this.ocupacion = ocupacion;
 	}
-	
-	public Cliente(String nombre, String apellidos, Date fechaNacimiento, String correo,
-			String telefono, Ciudad ciudad, Ocupacion ocupacion) {
-		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.fechaNacimiento = fechaNacimiento;
-		this.correo = correo;
-		this.telefono = telefono;
-		this.ciudad = ciudad;
-		this.ocupacion = ocupacion;
-	}
+
+
 
 	public Long getNumeroDocumento() {
 		return numeroDocumento;
@@ -112,6 +119,14 @@ public class Cliente {
 
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 	public String getCorreo() {
